@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\MicroService.Common\MicroService.Common.csproj" />
+    <ProjectReference Include="..\ReminderService.Core\SchedulerService.Core.csproj" />
+  </ItemGroup>
+
+</Project>

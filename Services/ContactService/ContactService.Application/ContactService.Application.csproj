@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\MicroService.Common\MicroService.Common.csproj" />
+    <ProjectReference Include="..\..\..\Infrastructure\SimpleCRM.Infrastructure.MessageBroker\SimpleCRM.Infrastructure.MessageBroker.csproj" />
+    <ProjectReference Include="..\ContactService.Core\ContactService.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.0.0" />
+  </ItemGroup>
+
+</Project>
