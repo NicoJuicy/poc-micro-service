@@ -14,7 +14,7 @@ namespace ContactService.Application.CQRS.Commands
         public CreateContact(Guid contactId, string firstName, string lastName, string phone, string email)
         {
 
-            ContactId = contactId == Guid.Empty ? Guid.NewGuid() : contactId; ;
+            ContactId = contactId == Guid.Empty ? Guid.NewGuid() : contactId; 
             FirstName = firstName;
             LastName = lastName;
             Phone = phone;

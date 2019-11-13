@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MicroService.Infrastructure;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Threading.Tasks;
 
-namespace MicroService.Infrastructure
+namespace MicroService.WebApi
 {
     public class TenantInfoMiddleware
     {

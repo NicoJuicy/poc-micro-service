@@ -68,6 +68,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroService.Core", "Common
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroService.Infrastructure", "Common\MicroService.Infrastructure\MicroService.Infrastructure.csproj", "{147C5188-DC59-479B-A406-A49379BCCFEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCRM.Gateway.Default", "Gateways\SimpleCRM.Gateway.Default\SimpleCRM.Gateway.Default.csproj", "{961A79C3-CB12-4136-BE5F-A018124D4F2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -166,6 +168,10 @@ Global
 		{147C5188-DC59-479B-A406-A49379BCCFEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{147C5188-DC59-479B-A406-A49379BCCFEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{147C5188-DC59-479B-A406-A49379BCCFEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{961A79C3-CB12-4136-BE5F-A018124D4F2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{961A79C3-CB12-4136-BE5F-A018124D4F2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{961A79C3-CB12-4136-BE5F-A018124D4F2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{961A79C3-CB12-4136-BE5F-A018124D4F2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -197,6 +203,7 @@ Global
 		{BC6797A5-0E9F-417F-A63E-2E67FC11CD11} = {9EEC81C3-B4D2-4CB0-B63E-A91B088DDF76}
 		{1236331B-EE58-4FE8-85F9-6CE01BFA8785} = {042C8198-A1ED-4D29-AD4B-3C03B859DC32}
 		{147C5188-DC59-479B-A406-A49379BCCFEB} = {042C8198-A1ED-4D29-AD4B-3C03B859DC32}
+		{961A79C3-CB12-4136-BE5F-A018124D4F2B} = {728EFF25-D160-4139-B139-00168FEFF14C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4D75DA06-91B1-4306-AB0D-A9D2F643E1BB}

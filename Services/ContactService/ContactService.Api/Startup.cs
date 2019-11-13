@@ -10,6 +10,7 @@ using ContactService.Infrastructure.Dependency;
 using ElmahCore.Mvc;
 using MediatR;
 using MicroService.Infrastructure;
+using MicroService.WebApi;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;

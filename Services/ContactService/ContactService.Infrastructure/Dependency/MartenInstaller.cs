@@ -12,14 +12,10 @@ namespace ContactService.Infrastructure.Dependency
         //https://jasperfx.github.io/marten/getting_started/ - Nog geen correcte IoC implementatie
         public static void AddMarten(this IServiceCollection services,  string connectionString)
         {
-            //   services.AddSingleton(CreateContactStore(connectionString));
-
-            //  var tenant = serviceProvider.GetRequiredService<TenantInfo>();
             services.AddScoped<IDataStore, MartenDataStore>();
             services.AddSingleton<IDocumentStore>((serviceProvider) =>
             {
-            //     var tenant = serviceProvider.GetRequiredService<TenantInfo>();
-            return CreateContactStore(connectionString);//, tenant.Name);
+            return CreateContactStore(connectionString);
             });
         }
 
@@ -28,11 +24,8 @@ namespace ContactService.Infrastructure.Dependency
 
             var store =  DocumentStore.For(_ =>
             {
-                //_.CreateDatabasesForTenants(el => el.ten);
                 _.Connection(connectionString);
-                _.DatabaseSchemaName = "contact_service";
-                //  _.Serializer(CustomizeJsonSerializer());
-                
+                _.DatabaseSchemaName = "contact_service";                
                 _.PLV8Enabled = false; // https://jasperfx.github.io/marten/documentation/documents/advanced/javascript_transformations/
 
                 _.Schema.For<Documents.ContactDocument>().Duplicate(el => el.LastName, configure: idx =>
@@ -58,16 +51,5 @@ namespace ContactService.Infrastructure.Dependency
             return store;
         }
 
-        //private static JsonNetSerializer CustomizeJsonSerializer()
-        //{
-        //    var serializer = new JsonNetSerializer();
-
-        //    serializer.Customize(_ =>
-        //    {
-        //        _.ContractResolver = new ProtectedSettersContractResolver();
-        //    });
-
-        //    return serializer;
-        //}
     }
 }
