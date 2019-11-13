@@ -25,7 +25,7 @@ namespace ContactService.Application.CQRS.Queries
 
         public string Email { get; }
 
-        public IEnumerable<Guid> Tags { get; set; }
-        public IEnumerable<Guid> Notes{ get; set; }
+        public IEnumerable<Guid> Tags { get;  }
+        public IEnumerable<Guid> Notes{ get;  }
     }
 }

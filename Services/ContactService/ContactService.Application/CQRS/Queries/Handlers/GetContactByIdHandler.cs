@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ContactService.Application.CQRS.Queries
+namespace ContactService.Application.CQRS.Queries.Handlers
 {
 
-    public class GetContactByIdHandler : IRequestHandler<GetContactById, DetailedContactDTO>
+    public class GetContactByIdHandler : IRequestHandler<GetContactById, ContactResult>
     {
         public GetContactByIdHandler(IDataStore dataStore)
         {
@@ -17,19 +17,19 @@ namespace ContactService.Application.CQRS.Queries
         }
         private readonly IDataStore dataStore;
 
-        public async Task<DetailedContactDTO> Handle(GetContactById request, CancellationToken cancellationToken)
+        public async Task<ContactResult> Handle(GetContactById request, CancellationToken cancellationToken)
         {
             var result = await dataStore.Contacts.GetContactAsync(request.ContactId);
 
-            return result != null ?  new ContactResult
-            {
-                Id = result.Id,
-                Email = result.Email,
-                FirstName= result.FirstName,
-                LastName = result.LastName,
-                Notes = result.Notes,
-                Tags = result.Tags
-            } : null;
+            return result != null ?  new ContactResult(
+                result.Id,
+                result.FirstName,
+                result.LastName,
+                 result.Phone,
+                   result.Email,
+                  
+                result.Tags,
+                result.Notes) : null;
         }
     }
 }

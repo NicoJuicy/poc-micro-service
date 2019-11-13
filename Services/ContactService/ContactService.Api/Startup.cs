@@ -9,8 +9,7 @@ using ContactService.Application.Dependency;
 using ContactService.Infrastructure.Dependency;
 using ElmahCore.Mvc;
 using MediatR;
-using MicroService.WebApi.Middleware;
-using MicroService.WebApi.Strategy;
+using MicroService.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -34,7 +33,8 @@ namespace ContactService.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            //https://github.com/merken/efcore-tenancy/blob/master/Startup.cs
+            services.AddScoped<TenantInfo>(); // Adds a scoped tenant object, controlled via middleware (TenantInfoMiddleware)
             services.AddMediatR(Assembly.GetExecutingAssembly(), typeof(CreateContactHandler).GetTypeInfo().Assembly);// typeof(Startup).GetTypeInfo().Assembly);
             services.AddApplication();
             services.AddInfrastructure(Configuration.GetConnectionString("PgConnection"));
@@ -44,8 +44,8 @@ namespace ContactService.Api
             services.AddElmah();
             services.AddControllers();
 
-              services.AddSingleton<ITenantStrategy, TenantFromRequestHeaderStrategy>();
-            services.AddScoped<ITenantMiddleWare>();
+            //services.AddSingleton<ITenantStrategy, TenantFromRequestHeaderStrategy>();
+            //services.AddScoped<ITenantMiddleWare, TenantMiddleware>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +57,7 @@ namespace ContactService.Api
             app.UseCors();
             app.UseElmah();
             app.UseDeveloperExceptionPage();
-
+            app.UseMiddleware<TenantInfoMiddleware>();
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
                 endpoints.MapHealthChecks("/health");

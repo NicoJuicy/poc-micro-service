@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using MicroService.Infrastructure;
 
 namespace ContactService.Infrastructure.Repositories
 {
@@ -12,9 +13,9 @@ namespace ContactService.Infrastructure.Repositories
         private readonly IDocumentSession session;
         private readonly IContactRepository contacts;
 
-        public MartenDataStore(IDocumentStore documentStore)
+        public MartenDataStore(IDocumentStore documentStore, TenantInfo tenantInfo)
         {
-            session = documentStore.LightweightSession();
+            session = documentStore.LightweightSession(tenantInfo.Name);
             contacts = new ContactRepository(session);
         }
 

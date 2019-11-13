@@ -11,10 +11,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MicroService.Common\MicroService.Common.csproj" />
+    <ProjectReference Include="..\MicroService.Core\MicroService.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Builders\" />
+    <Folder Include="Middleware\" />
+    <Folder Include="Strategy\" />
   </ItemGroup>
 
 </Project>

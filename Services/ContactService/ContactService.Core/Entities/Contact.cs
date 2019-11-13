@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ContactService.Core.Entities
 {
-    public class Contact : AggregateRoot
+    public class Contact // : AggregateRoot
     {
         public Contact(Guid id, string firstName, string lastName, string email, string phone)
         {
@@ -17,7 +17,7 @@ namespace ContactService.Core.Entities
             Phone = phone;
 
         }
-        //public Guid Id { get; set; }
+        public Guid Id { get; set; }
 
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
@@ -32,13 +32,13 @@ namespace ContactService.Core.Entities
         public void ChangeAddress(ComplexTypes.Address address)
         {
             this.Address = address;
-            AddEvent(new Events.ContactAddressChanged(this));
+          //  AddEvent(new Events.ContactAddressChanged(this));
         }
 
         public void ChangeEmail(string email)
         {
             this.Email = email;
-            AddEvent(new Events.ContactEmailChanged(this));
+         //   AddEvent(new Events.ContactEmailChanged(this));
         }
 
         private ISet<Guid> _notes = new HashSet<Guid>();

@@ -1,5 +1,6 @@
 ﻿using ContactService.Infrastructure.Repositories;
 using Marten;
+using MicroService.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq.Expressions;
@@ -8,16 +9,26 @@ namespace ContactService.Infrastructure.Dependency
 {
     public static class MartenInstaller
     {
-        public static void AddMarten(this IServiceCollection services, string connectionString)
+        //https://jasperfx.github.io/marten/getting_started/ - Nog geen correcte IoC implementatie
+        public static void AddMarten(this IServiceCollection services,  string connectionString)
         {
-            services.AddSingleton(CreateContactStore(connectionString));
+            //   services.AddSingleton(CreateContactStore(connectionString));
+
+            //  var tenant = serviceProvider.GetRequiredService<TenantInfo>();
             services.AddScoped<IDataStore, MartenDataStore>();
+            services.AddSingleton<IDocumentStore>((serviceProvider) =>
+            {
+            //     var tenant = serviceProvider.GetRequiredService<TenantInfo>();
+            return CreateContactStore(connectionString);//, tenant.Name);
+            });
         }
 
         private static IDocumentStore CreateContactStore(string connectionString)
         {
-            return DocumentStore.For(_ =>
+
+            var store =  DocumentStore.For(_ =>
             {
+                //_.CreateDatabasesForTenants(el => el.ten);
                 _.Connection(connectionString);
                 _.DatabaseSchemaName = "contact_service";
                 //  _.Serializer(CustomizeJsonSerializer());
@@ -38,9 +49,13 @@ namespace ContactService.Infrastructure.Dependency
                 };
 
                 _.Schema.For<Documents.ContactDocument>().Index(indexedColumns);
-
+                _.Schema.For<Documents.ContactDocument>().MultiTenanted();
 
             });
+
+            
+
+            return store;
         }
 
         //private static JsonNetSerializer CustomizeJsonSerializer()

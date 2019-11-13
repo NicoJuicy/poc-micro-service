@@ -7,6 +7,10 @@ namespace ContactService.Application.CQRS.Commands
 {
     public class CreateContact : IRequest<CreateContactResult>
     {
+        public CreateContact()
+        {
+
+        }
         public CreateContact(Guid contactId, string firstName, string lastName, string phone, string email)
         {
 
@@ -16,14 +20,14 @@ namespace ContactService.Application.CQRS.Commands
             Phone = phone;
             Email = email;
         }
-        public Guid ContactId { get; }
+        public Guid ContactId { get; set; }
 
-        public string FirstName { get; }
-        public string LastName { get; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
-        public string Phone { get; }
+        public string Phone { get; set; }
 
-        public string Email { get; }
+        public string Email { get; set; }
 
     }
 }

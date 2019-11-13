@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
 
-namespace ContactService.Application.CQRS.Queries
+namespace ContactService.Application.CQRS.Queries.Handlers
 {
 
 
