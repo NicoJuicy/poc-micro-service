@@ -4,8 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ContactService.Application.CQRS.Commands;
 using ContactService.Application.CQRS.Queries;
-using ContactService.Application.CQRS.Queries.GetContacts;
-using ContactService.Application.DTO;
+using ContactService.Application.CQRS;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -27,33 +26,33 @@ namespace ContactService.Api.Controllers
         [HttpPost]
         //[ProducesResponseType(typeof(User), 201)]
         //[ProducesResponseType(typeof(ErrorResource), 400)]
-        public async Task<IActionResult> PostAsync([FromBody] ContactDTO resource)
+        public async Task<IActionResult> PostAsync([FromBody] Application.CQRS.Commands.CreateContact resource)
         {
-            var Contact = await _mediator.Send(new CreateContact() { Contact = resource });
+            var Contact = await _mediator.Send(new Application.CQRS.Commands.CreateContact(resource.ContactId, resource.FirstName, resource.LastName, resource.Phone, resource.Email));
             return Created($"/api/Contacts/{Contact.ContactId}", Contact);
         }
 
         // PUT: api/Contacts/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAsync(Guid id, [FromBody] DetailedContactDTO resource)
+        public async Task<IActionResult> PutAsync(Guid id, [FromBody] Application.CQRS.Commands.UpdateContact resource)
         {
-            var Contact = await _mediator.Send(new UpdateContact() { Contact = resource });
+            var Contact = await _mediator.Send(new Application.CQRS.Commands.UpdateContact(resource.ContactId, resource.FirstName, resource.LastName, resource.Phone, resource.Email));
             return Ok(Contact);
         }
 
         //  GET: api/Contacts
         [HttpGet]
-        public async Task<List<DetailedContactDTO>> Get()
+        public async Task<List<Application.CQRS.Queries.ContactResult>> Get()
         {
-            var Contacts = await _mediator.Send(new GetContactsQuery());
+            var Contacts = await _mediator.Send(new GetContacts());
             return Contacts.ToList();
         }
 
         // GET: api/Contacts/5
         [HttpGet("{id}", Name = "Get")]
-        public async Task<DetailedContactDTO> Get(Guid id)
+        public async Task<ContactResult> Get(Guid id)
         {
-            var Contact = await _mediator.Send(new GetContactByIdQuery() { ContactId = id });
+            var Contact = await _mediator.Send(new GetContactById() { ContactId = id });
             return Contact;
         }
 

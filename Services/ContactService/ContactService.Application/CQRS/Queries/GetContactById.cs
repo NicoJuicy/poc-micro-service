@@ -1,5 +1,4 @@
-﻿using ContactService.Application.DTO;
-using MediatR;
+﻿using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +6,7 @@ using System.Text;
 namespace ContactService.Application.CQRS.Queries
 {
 
-    public class GetContactByIdQuery : IRequest<DetailedContactDTO>
+    public class GetContactById : IRequest<ContactResult>
     {
         public Guid ContactId { get; set; }
     }

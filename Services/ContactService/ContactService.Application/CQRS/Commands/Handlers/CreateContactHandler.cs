@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ContactService.Application.CQRS.Commands.Handlers
 {
-    public class CreateContactHandler : AsyncRequestHandler<Commands.CreateContact>
+    public class CreateContactHandler : IRequestHandler<Commands.CreateContact, CreateContactResult>
     {
         public CreateContactHandler(IDataStore dataStore, IEventBus eventBus) 
         {
@@ -19,22 +19,21 @@ namespace ContactService.Application.CQRS.Commands.Handlers
         private readonly IDataStore dataStore;
         private readonly IEventBus eventBus;
 
-        protected override async Task Handle(Commands.CreateContact request, CancellationToken cancellationToken)
+       
+
+        public async Task<CreateContactResult> Handle(CreateContact request, CancellationToken cancellationToken)
         {
-
-            Guid ContactId = request.Contact.Id == Guid.Empty ? Guid.NewGuid() : request.Contact.Id; // Guid should not be returned from the store. A command shouldn't return values || request.Contact.Id,
-
-            if (string.IsNullOrEmpty(request.Contact.FirstName) && string.IsNullOrEmpty(request.Contact.LastName))
+            if (string.IsNullOrEmpty(request.FirstName) && string.IsNullOrEmpty(request.LastName))
             {
-                throw new Exceptions.ContactNameIsEmptyException(ContactId, request.Contact.FirstName, request.Contact.LastName);
+                throw new Exceptions.ContactNameIsEmptyException(request.ContactId, request.FirstName, request.LastName);
             }
 
             var contact = new Core.Entities.Contact(
-                id: ContactId,
-                firstName: request.Contact.FirstName,
-                lastName: request.Contact.LastName,
-                email: request.Contact.Email,
-                phone: request.Contact.Phone
+                id: request.ContactId,
+                firstName: request.FirstName,
+                lastName: request.LastName,
+                email: request.Email,
+                phone: request.Phone
             );
 
             dataStore.Contacts.AddContact(contact);
@@ -42,6 +41,7 @@ namespace ContactService.Application.CQRS.Commands.Handlers
 
             eventBus.Publish(new Events.ContactCreated("TenantId", contact.Id));
 
+            return new CreateContactResult(contact.Id);
         }
     }
 }

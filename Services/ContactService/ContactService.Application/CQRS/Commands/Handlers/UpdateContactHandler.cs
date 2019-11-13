@@ -24,24 +24,23 @@ namespace ContactService.Application.CQRS.Commands.Handlers
         protected override async Task Handle(Commands.UpdateContact request, CancellationToken cancellationToken)
         {
 
-            if (string.IsNullOrEmpty(request.Contact.FirstName) && string.IsNullOrEmpty(request.Contact.LastName))
+            if (string.IsNullOrEmpty(request.FirstName) && string.IsNullOrEmpty(request.LastName))
             {
-                throw new Exceptions.ContactNameIsEmptyException(request.Contact.Id, request.Contact.FirstName, request.Contact.LastName);
+                throw new Exceptions.ContactNameIsEmptyException(request.ContactId, request.FirstName, request.LastName);
             }
 
-            if (!string.IsNullOrEmpty(request.Contact.Email))
+            if (!string.IsNullOrEmpty(request.Email))
             {
-                if (!new EmailAddressAttribute().IsValid(request.Contact.Email))
-                    throw new Exceptions.ContactEmailIsNotValidException(request.Contact.Id, request.Contact.Email);
+                if (!new EmailAddressAttribute().IsValid(request.Email))
+                    throw new Exceptions.ContactEmailIsNotValidException(request.ContactId, request.Email);
             }
 
-            
             var contact = new Core.Entities.Contact(
-                id: request.Contact.Id,
-                firstName   : request.Contact.FirstName,
-                lastName: request.Contact.LastName,
-                email: request.Contact.Email,
-                phone: request.Contact.Phone
+                id: request.ContactId,
+                firstName   : request.FirstName,
+                lastName: request.LastName,
+                email: request.Email,
+                phone: request.Phone
                 );
             
 

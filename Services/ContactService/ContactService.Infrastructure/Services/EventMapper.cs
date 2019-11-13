@@ -1,4 +1,4 @@
-﻿using MicroService.Application.Services;
+﻿//using MicroService.Application.Services;
 using MicroService.Core;
 using SimpleCRM.Infrastructure.MessageBroker.Events;
 using System;

@@ -1,5 +1,4 @@
-﻿using ContactService.Application.DTO;
-using ContactService.Infrastructure.Repositories;
+﻿using ContactService.Infrastructure.Repositories;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 namespace ContactService.Application.CQRS.Queries
 {
 
-    public class GetContactByIdHandler : IRequestHandler<GetContactByIdQuery, DetailedContactDTO>
+    public class GetContactByIdHandler : IRequestHandler<GetContactById, DetailedContactDTO>
     {
         public GetContactByIdHandler(IDataStore dataStore)
         {
@@ -18,11 +17,11 @@ namespace ContactService.Application.CQRS.Queries
         }
         private readonly IDataStore dataStore;
 
-        public async Task<DetailedContactDTO> Handle(GetContactByIdQuery request, CancellationToken cancellationToken)
+        public async Task<DetailedContactDTO> Handle(GetContactById request, CancellationToken cancellationToken)
         {
             var result = await dataStore.Contacts.GetContactAsync(request.ContactId);
 
-            return result != null ?  new DetailedContactDTO
+            return result != null ?  new ContactResult
             {
                 Id = result.Id,
                 Email = result.Email,

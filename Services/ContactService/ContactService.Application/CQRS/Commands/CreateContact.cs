@@ -1,12 +1,11 @@
-﻿using ContactService.Application.DTO;
-using MediatR;
+﻿using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ContactService.Application.CQRS.Commands
 {
-    public class CreateContact : IRequest
+    public class CreateContact : IRequest<CreateContactResult>
     {
         public CreateContact(Guid contactId, string firstName, string lastName, string phone, string email)
         {

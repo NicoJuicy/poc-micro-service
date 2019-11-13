@@ -30,7 +30,7 @@ namespace NoteService.Application.CQRS.Commands.DeleteNote
 
             await dataStore.CommitChanges();
 
-            eventBus.Publish(new Events.NoteDeleted(note.Id));
+            eventBus.Publish(new Events.NoteDeleted("TenantId", note.Id));
 
 
             return new DeleteNoteResult()
