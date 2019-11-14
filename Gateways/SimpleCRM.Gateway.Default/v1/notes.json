@@ -1,0 +1,38 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/notes",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44334
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/notes",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "TestKey",
+      //  "AllowedScopes": []
+      //},
+      "UpstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/notes/{noteId}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44334
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/notes/{noteId}",
+      "UpstreamHttpMethod": [ "Get", "Put", "Delete" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId"
+  }
+}

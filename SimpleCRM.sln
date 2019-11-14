@@ -66,9 +66,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchedulerService.Applicatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroService.Core", "Common\MicroService.Core\MicroService.Core.csproj", "{1236331B-EE58-4FE8-85F9-6CE01BFA8785}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroService.Infrastructure", "Common\MicroService.Infrastructure\MicroService.Infrastructure.csproj", "{147C5188-DC59-479B-A406-A49379BCCFEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroService.Infrastructure", "Common\MicroService.Infrastructure\MicroService.Infrastructure.csproj", "{147C5188-DC59-479B-A406-A49379BCCFEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCRM.Gateway.Default", "Gateways\SimpleCRM.Gateway.Default\SimpleCRM.Gateway.Default.csproj", "{961A79C3-CB12-4136-BE5F-A018124D4F2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCRM.Gateway.Default", "Gateways\SimpleCRM.Gateway.Default\SimpleCRM.Gateway.Default.csproj", "{961A79C3-CB12-4136-BE5F-A018124D4F2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactService.Grpc", "Services\ContactService\ContactService.Grpc\ContactService.Grpc.csproj", "{3010C560-A0BA-4D66-971C-F86B8DC0820B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -172,6 +174,10 @@ Global
 		{961A79C3-CB12-4136-BE5F-A018124D4F2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{961A79C3-CB12-4136-BE5F-A018124D4F2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{961A79C3-CB12-4136-BE5F-A018124D4F2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3010C560-A0BA-4D66-971C-F86B8DC0820B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3010C560-A0BA-4D66-971C-F86B8DC0820B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3010C560-A0BA-4D66-971C-F86B8DC0820B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3010C560-A0BA-4D66-971C-F86B8DC0820B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -204,6 +210,7 @@ Global
 		{1236331B-EE58-4FE8-85F9-6CE01BFA8785} = {042C8198-A1ED-4D29-AD4B-3C03B859DC32}
 		{147C5188-DC59-479B-A406-A49379BCCFEB} = {042C8198-A1ED-4D29-AD4B-3C03B859DC32}
 		{961A79C3-CB12-4136-BE5F-A018124D4F2B} = {728EFF25-D160-4139-B139-00168FEFF14C}
+		{3010C560-A0BA-4D66-971C-F86B8DC0820B} = {2A1D13F2-3E26-4381-BC92-7C732F69D87C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4D75DA06-91B1-4306-AB0D-A9D2F643E1BB}

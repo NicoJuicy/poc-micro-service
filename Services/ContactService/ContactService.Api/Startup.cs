@@ -11,6 +11,7 @@ using ElmahCore.Mvc;
 using MediatR;
 using MicroService.Infrastructure;
 using MicroService.WebApi;
+using MicroService.WebApi.ServiceDiscovery;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -44,6 +45,7 @@ namespace ContactService.Api
             services.AddHealthChecks();
             services.AddElmah();
             services.AddControllers();
+        //    services.ConfigureConsul(Configuration);
 
             //services.AddSingleton<ITenantStrategy, TenantFromRequestHeaderStrategy>();
             //services.AddScoped<ITenantMiddleWare, TenantMiddleware>();
@@ -68,6 +70,18 @@ namespace ContactService.Api
         private static IEventBus CreateNatsBus(string[] ips)
         {
             return new NatsEventBus<IEvent>(ips);
+        }
+
+      
+    }
+
+    public static class ConsulExtensions
+    {
+        public static void ConfigureConsul(this IServiceCollection services, IConfiguration configuration)
+        {
+            var serviceConfig = configuration.GetServiceConfig();
+
+            services.RegisterConsulServices(serviceConfig);
         }
     }
 }
