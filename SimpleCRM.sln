@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{CB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ContactService", "ContactService", "{2A1D13F2-3E26-4381-BC92-7C732F69D87C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TagService", "TagService", "{8C684B87-547F-4B12-9240-87A3AADFF685}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TagService-ignore", "TagService-ignore", "{8C684B87-547F-4B12-9240-87A3AADFF685}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SchedulerService", "SchedulerService", "{9EEC81C3-B4D2-4CB0-B63E-A91B088DDF76}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SchedulerService-ignore", "SchedulerService-ignore", "{9EEC81C3-B4D2-4CB0-B63E-A91B088DDF76}"
 	ProjectSection(SolutionItems) = preProject
 		ReadMe.txt = ReadMe.txt
 	EndProjectSection
@@ -68,7 +68,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroService.Infrastructure
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCRM.Gateway.Default", "Gateways\SimpleCRM.Gateway.Default\SimpleCRM.Gateway.Default.csproj", "{961A79C3-CB12-4136-BE5F-A018124D4F2B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TenantService", "TenantService", "{B6C45F93-9C2A-46FD-8FC8-93F230E11522}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TenantService-ignore", "TenantService-ignore", "{B6C45F93-9C2A-46FD-8FC8-93F230E11522}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TenantService.Api", "Services\TenantService\TenantService.Api\TenantService.Api.csproj", "{8CF5E511-ECF6-4FF6-9931-CBCC9E8DC593}"
 EndProject
@@ -77,8 +77,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TenantService.Application", "Services\TenantService\TenantService.Application\TenantService.Application.csproj", "{E3F683DB-4F84-4946-BF0E-E67FC645586B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TenantService.Infrastructure", "Services\TenantService\TenantService.Infrastructure\TenantService.Infrastructure.csproj", "{C260592C-4CEC-4CE7-A35F-388C91A5AFE5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "Services\IdentityServer\IdentityServer.csproj", "{B733671A-A56E-4199-A0E2-2D0EBF5EF7F1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{4A6ADC6C-6163-4054-8479-64707DED9F1F}"
 EndProject
@@ -198,10 +196,6 @@ Global
 		{C260592C-4CEC-4CE7-A35F-388C91A5AFE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C260592C-4CEC-4CE7-A35F-388C91A5AFE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C260592C-4CEC-4CE7-A35F-388C91A5AFE5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B733671A-A56E-4199-A0E2-2D0EBF5EF7F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B733671A-A56E-4199-A0E2-2D0EBF5EF7F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B733671A-A56E-4199-A0E2-2D0EBF5EF7F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B733671A-A56E-4199-A0E2-2D0EBF5EF7F1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A34097A2-A9BB-44A6-B42F-644FE0878D8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A34097A2-A9BB-44A6-B42F-644FE0878D8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A34097A2-A9BB-44A6-B42F-644FE0878D8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -243,7 +237,6 @@ Global
 		{1A2EF359-388E-433E-AF45-7D1B2BFE03EC} = {B6C45F93-9C2A-46FD-8FC8-93F230E11522}
 		{E3F683DB-4F84-4946-BF0E-E67FC645586B} = {B6C45F93-9C2A-46FD-8FC8-93F230E11522}
 		{C260592C-4CEC-4CE7-A35F-388C91A5AFE5} = {B6C45F93-9C2A-46FD-8FC8-93F230E11522}
-		{B733671A-A56E-4199-A0E2-2D0EBF5EF7F1} = {CBDC9178-16D1-4131-942E-9C6E544B9241}
 		{A34097A2-A9BB-44A6-B42F-644FE0878D8C} = {4A6ADC6C-6163-4054-8479-64707DED9F1F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
