@@ -37,3 +37,20 @@ But the gateway won't redirect to the path to notes ( it will go to contacts).
 
 5. **Infrastructure layer should only contain CRUD of the Aggregate ( eg. Contact).**, it contains too much now.
 
+### changes for my other microservices
+
+- Chosen tech is robust, code is good
+
+- using a framework that supports SAGA's ( eg. MassTransit)
+
+- more DDD ( eg. AggregateRoot, value-objects )
+
+- other flow of sending events ( through the AggregateRoot)
+
+- Angular 8 or Vue 3 as admin dashboard, not for client webapps
+
+- removing the api layer and gateway, leaves a robust modular monolith structure and removes a lot of lag ( eg. Gateway alone is 50ms delay ) and simplifies devops complexity
+
+- Implement IdentityServer for user management, it's worth investigating
+
+
