@@ -1,7 +1,10 @@
 # poc-micro-service
 PoC - Microservice with a gateway, healthchecks, 2 microservices and a quick frontend with IdentityServer in asp.net core
 
-Tech: Nats as message broker ( not actually used) and Postgress.
+Tech: 
+
+- Nats as message broker ( sending is used, but not receiving / handling Integration events) 
+- Postgress as DocumentStore
 
 # Note
 
