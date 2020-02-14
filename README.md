@@ -10,7 +10,7 @@ This is just a PoC, treat it as one, what is described as working works. It serv
 # poc-micro-service
 PoC - Microservice with a gateway, healthchecks, 2 microservices and a quick frontend with IdentityServer in asp.net core 3.0
 
-Tech: 
+### Tech: 
 
 - Nats as message broker ( sending is implemented, but not handling them) 
 - Postgress as DocumentStore
