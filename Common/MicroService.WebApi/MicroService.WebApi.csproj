@@ -7,12 +7,16 @@
   <ItemGroup>
     <PackageReference Include="Consul" Version="0.7.2.6" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="3.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\SimpleCRM.Infrastructure.MessageBroker\SimpleCRM.Infrastructure.MessageBroker.csproj" />
     <ProjectReference Include="..\MicroService.Common\MicroService.Common.csproj" />
     <ProjectReference Include="..\MicroService.Core\MicroService.Core.csproj" />
     <ProjectReference Include="..\MicroService.Infrastructure\MicroService.Infrastructure.csproj" />

@@ -1,0 +1,11 @@
+﻿@page
+@model SimpleCRM.Web.Pages.NotesModel
+@{
+    ViewData["Title"] = "Notes";
+    var notes = ViewData["Model"];
+}
+
+<h1>Notes</h1>
+<pre>
+@Newtonsoft.Json.JsonConvert.SerializeObject(notes)
+</pre>

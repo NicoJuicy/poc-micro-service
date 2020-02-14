@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="v1\contacts - Copy.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="healthchecksdb" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.UI" Version="3.0.4" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="3.0.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.Uris" Version="3.0.0" />
     <PackageReference Include="Ocelot" Version="13.8.0" />
     <PackageReference Include="Ocelot.Administration" Version="13.8.0" />
     <PackageReference Include="Ocelot.Provider.Consul" Version="13.8.0" />

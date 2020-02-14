@@ -11,13 +11,14 @@
       ],
       "UpstreamPathTemplate": "/api/v1/contacts",
       "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UpstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
       //"AuthenticationOptions": {
       //  "AuthenticationProviderKey": "TestKey",
       //  "AllowedScopes": []
       //},
-      "UpstreamHeaderTransform": {
-        "X-Forwarded-For": "{RemoteIpAddress}"
-      }
+
     },
     {
       "DownstreamPathTemplate": "/api/contacts/{contactId}",

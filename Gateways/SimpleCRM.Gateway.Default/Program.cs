@@ -11,6 +11,11 @@ using Ocelot.Administration;
 using System;
 using IdentityServer4.AccessTokenValidation;
 using Ocelot.Provider.Consul;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using HealthChecks.UI.Client;
 
 namespace SimpleCRM.Gateway.Default
 {
@@ -33,15 +38,39 @@ namespace SimpleCRM.Gateway.Default
                 {
                     config
                     .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
-                    .AddJsonFile("ocelot.json")
+                    //.AddJsonFile("ocelot.json")
+                     .AddJsonFile("v1/notes.json")
                     .AddJsonFile("v1/contacts.json")
-                    .AddJsonFile("v1/notes.json")
-                    .AddJsonFile("v1/tags.json")
+                    
+                    //  .AddJsonFile("v1/tags.json") //Only one can be added :(
                     .AddEnvironmentVariables();
 
                 })
                 .ConfigureServices(s =>
                 {
+                    s.AddHealthChecks()
+                    .AddUrlGroup(new Uri("https://localhost:44334/hb"), "contacts service")
+                    .AddUrlGroup(new Uri("https://localhost:44387/hb"), "notes service");
+                    //.AddAsyncCheck("Http", async () =>
+                    //{
+                    //    using (HttpClient client = new HttpClient())
+                    //    {
+                    //        try
+                    //        {
+                    //            var response = await client.GetAsync("http://localhost:5000");
+                    //            if (!response.IsSuccessStatusCode)
+                    //            {
+                    //                throw new Exception("Url not responding with 200 OK");
+                    //            }
+                    //        }
+                    //        catch (Exception)
+                    //        {
+                    //            return await Task.FromResult(HealthCheckResult.Failed());
+                    //        }
+                    //    }
+                    //    return await Task.FromResult(HealthCheckResult.Passed());
+                    //});
+                    s.AddHealthChecksUI();
                     s.AddOcelot();//.AddConsul();
                     //var authenticationProviderKey = "TestKey";
                     //s.AddAuthentication().AddJwtBearer(authenticationProviderKey, x =>
@@ -61,7 +90,7 @@ namespace SimpleCRM.Gateway.Default
                     //    };
                     //});
                     //s.AddAdministration("/administration", "secret");
-                    s.AddMvc();
+                    
 
                 })
                 .ConfigureLogging((logging) =>
@@ -72,8 +101,24 @@ namespace SimpleCRM.Gateway.Default
                 })
                 .Configure(a =>
                 {
+                    a.UseHealthChecks("/hb", new HealthCheckOptions()
+                    {
+                        Predicate = _ => true,
+                        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                    })
+       .UseHealthChecksUI(setup =>
+       {
+           setup.ApiPath = "/hc-api";
+           setup.UIPath = "/hc-ui";
+       });
+                    a.UseRouting();
+                    a.UseEndpoints(config =>
+                    {
+                        config.MapHealthChecksUI();
+                    });
                     a.UseOcelot().Wait();
                 });
+
 
         // public static void Main(string[] args)
         // {

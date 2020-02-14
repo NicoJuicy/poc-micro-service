@@ -8,6 +8,7 @@ using ContactService.Application.CQRS;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace ContactService.Api.Controllers
 {
@@ -24,8 +25,8 @@ namespace ContactService.Api.Controllers
 
 
         [HttpPost]
-        //[ProducesResponseType(typeof(User), 201)]
-        //[ProducesResponseType(typeof(ErrorResource), 400)]
+        [ProducesResponseType(typeof(CreateContactResult), (int)HttpStatusCode.Created)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> PostAsync([FromBody] Application.CQRS.Commands.CreateContact resource)
         {
             var Contact = await _mediator.Send(new Application.CQRS.Commands.CreateContact(resource.ContactId, resource.FirstName, resource.LastName, resource.Phone, resource.Email));
@@ -42,6 +43,8 @@ namespace ContactService.Api.Controllers
 
         //  GET: api/Contacts
         [HttpGet]
+        [ProducesResponseType(typeof(List<ContactResult>), 200)]
+
         public async Task<List<Application.CQRS.Queries.ContactResult>> Get()
         {
             var Contacts = await _mediator.Send(new GetContacts());

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ContactService.Application.Exceptions
 {
-    public class ContactNotFoundException : ExceptionBase
+    public class ContactNotFoundException : ContactDomainException
     {
         public ContactNotFoundException(Guid id) : base(
             $"Contact for {id} could not be found")

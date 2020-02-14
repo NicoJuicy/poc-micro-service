@@ -26,11 +26,15 @@ namespace SimpleCRM.Infrastructure.MessageBroker.Nats
                //Hosts to use. When connecting, will randomize the list
                //and try to connect. First successful will be used.
                _hosts);
-
+            //docker run -p 4222:4222 -p 8222:8222 -ti nats:latest 
             client = new NatsClient(connectionInfo);
             client.Connect();
         }
 
+        public bool IsConnected()
+        {
+            return client.IsConnected;
+        }
 
        // [Obsolete(error:true,message:"Yeah, this won't work yet")]
        //public async Task ix(this IServiceCollection sc)

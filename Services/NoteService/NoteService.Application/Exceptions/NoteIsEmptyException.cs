@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NoteService.Application.Exceptions
 {
-    public class NoteIsEmptyException : ExceptionBase
+    public class NoteIsEmptyException : NoteDomainException
     {
         public NoteIsEmptyException(Guid id):base(
             $"note for {id} can not be created because the value is empty")

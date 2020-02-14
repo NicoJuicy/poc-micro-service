@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="3.0.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.System" Version="3.0.3" />
     <PackageReference Include="ElmahCore" Version="1.2.5" />
     <PackageReference Include="MediatR" Version="7.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />

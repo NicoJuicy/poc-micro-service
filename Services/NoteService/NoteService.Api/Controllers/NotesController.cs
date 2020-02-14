@@ -26,8 +26,6 @@ namespace NoteService.Api.Controllers
             this._mediator = mediator;
         }
 
-        
-
         [HttpPost]
         //[ProducesResponseType(typeof(User), 201)]
         //[ProducesResponseType(typeof(ErrorResource), 400)]

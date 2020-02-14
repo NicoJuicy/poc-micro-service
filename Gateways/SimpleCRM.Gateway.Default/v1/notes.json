@@ -6,7 +6,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44334
+          "Port": 44387
         }
       ],
       "UpstreamPathTemplate": "/api/v1/notes",
@@ -18,14 +18,14 @@
       "UpstreamHeaderTransform": {
         "X-Forwarded-For": "{RemoteIpAddress}"
       }
-    },
+      },
     {
       "DownstreamPathTemplate": "/api/notes/{noteId}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44334
+          "Port": 44387
         }
       ],
       "UpstreamPathTemplate": "/api/v1/notes/{noteId}",

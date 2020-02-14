@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ContactService.Application.Exceptions
 {
-    public class ContactNameIsEmptyException : ExceptionBase
+    public class ContactNameIsEmptyException : ContactDomainException
     {
         public ContactNameIsEmptyException(Guid id, string firstName, string lastName) : base(
             $"contact for {id} can not be created because the name is empty. Firstname : {firstName}, Lastname: {lastName} ")

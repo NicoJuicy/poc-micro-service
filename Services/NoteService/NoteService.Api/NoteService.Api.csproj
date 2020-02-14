@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="3.0.0" />
     <PackageReference Include="ElmahCore" Version="1.2.5" />
     <PackageReference Include="MediatR" Version="7.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
@@ -16,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\MicroService.WebApi\MicroService.WebApi.csproj" />
     <ProjectReference Include="..\..\..\Infrastructure\SimpleCRM.Infrastructure.MessageBroker.Nats\SimpleCRM.Infrastructure.MessageBroker.Nats.csproj" />
     <ProjectReference Include="..\..\..\Infrastructure\SimpleCRM.Infrastructure.MessageBroker\SimpleCRM.Infrastructure.MessageBroker.csproj" />
     <ProjectReference Include="..\NoteService.Application\NoteService.Application.csproj" />

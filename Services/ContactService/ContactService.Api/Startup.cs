@@ -11,6 +11,8 @@ using ElmahCore.Mvc;
 using MediatR;
 using MicroService.Infrastructure;
 using MicroService.WebApi;
+using MicroService.WebApi.Filters;
+using MicroService.WebApi.HealthCheck;
 using MicroService.WebApi.ServiceDiscovery;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -45,7 +47,16 @@ namespace ContactService.Api
             services.AddHealthChecks();
             services.AddElmah();
             services.AddControllers();
-        //    services.ConfigureConsul(Configuration);
+
+            services.AddHealthChecks()
+              .AddNpgSql(Configuration.GetConnectionString("PgConnection"));
+           //   .AddCheck(new EventBusHealthCheck(Configuration.fr))
+
+            services.AddMvc(options => {
+                options.Filters.Add(typeof(HttpGlobalExceptionFilter<Application.Exceptions.ContactDomainException>));
+            });
+
+            //    services.ConfigureConsul(Configuration);
 
             //services.AddSingleton<ITenantStrategy, TenantFromRequestHeaderStrategy>();
             //services.AddScoped<ITenantMiddleWare, TenantMiddleware>();
@@ -58,12 +69,13 @@ namespace ContactService.Api
 
             app.UseRouting();
             app.UseCors();
+            app.UseHealthChecks("/hb");
             app.UseElmah();
             app.UseDeveloperExceptionPage();
             app.UseMiddleware<TenantInfoMiddleware>();
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
-                endpoints.MapHealthChecks("/health");
+              //  endpoints.MapHealthChecks("/health");
             });
         }
 

@@ -13,10 +13,5 @@ namespace ContactService.Infrastructure.Dependency
         {
             services.AddMarten(connectionString);
         }
-
-        //public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder app)
-        //{
-        //    //app.Sub
-        //}
     }
 }

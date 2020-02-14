@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MicroService.Common.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Text;
 

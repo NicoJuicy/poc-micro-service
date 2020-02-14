@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.Hangfire" Version="3.0.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="3.0.0" />
     <PackageReference Include="Hangfire.AspNetCore" Version="1.7.7" />
   </ItemGroup>
 

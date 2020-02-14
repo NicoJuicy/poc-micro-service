@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using ElmahCore.Mvc;
 using MediatR;
+using MicroService.WebApi.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -35,15 +36,22 @@ namespace NoteService.Api
             services.AddMediatR(Assembly.GetExecutingAssembly(), typeof(CreateNoteHandler).GetTypeInfo().Assembly);// typeof(Startup).GetTypeInfo().Assembly);
             services.AddApplication();
             services.AddInfrastructure(Configuration.GetConnectionString("PgConnection"));
+            services.AddHealthChecks()
+                .AddNpgSql(Configuration.GetConnectionString("PgConnection"));
             // services.AddMvc();
 
             services.AddSingleton<IEventBus>(CreateNatsBus(Configuration.GetSection("MessageBus:Nats:Ip").Get<string[]>()));
           //  services.AddScoped<IEventBus, CreateNatsBus(Configuration.GetSection("MessageBus:Nats:Ip").Get<string[]>());
 
          //   services.AddRazorPages().AddMvcOptions(options => options.EnableEndpointRouting = true);
-            services.AddHealthChecks();
+           // services.AddHealthChecks();
             services.AddElmah();
             services.AddControllers();
+
+            services.AddMvc(options => {
+                options.Filters.Add(typeof(HttpGlobalExceptionFilter<Application.Exceptions.NoteDomainException>));
+            });
+
             //services.AddSwaggerGen(c =>
             //{
             //    c.SwaggerDoc("v1", new Info { Title = "Note Api", Version = "v1" });
@@ -53,14 +61,15 @@ namespace NoteService.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)//, IHostingEnvironment env)
         {
-            
+            app.UseHealthChecks("/hb");
+
             //if (env.IsDevelopment())
             //{
             //    app.UseDeveloperExceptionPage();
             //}
 
 
-          //  app.UseMvc();
+            //  app.UseMvc();
             app.UseRouting();
             app.UseCors();
             app.UseElmah();
@@ -77,7 +86,7 @@ namespace NoteService.Api
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
-                endpoints.MapHealthChecks("/health");
+              //  endpoints.MapHealthChecks("/hb");
             });
 
             //app.Run(async (context) =>

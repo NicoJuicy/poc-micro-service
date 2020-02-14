@@ -25,6 +25,7 @@ namespace SchedulerService.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            //services.AddHealthChecks().AddHangfire();
         //    services.AddHangfire();
 
         }
