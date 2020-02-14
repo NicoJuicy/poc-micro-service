@@ -23,4 +23,4 @@ But the gateway won't redirect to the path to notes ( it will go to contacts).
 
 3. TagService / SchedulerService / Multitenancy is not implemented. The concepts are here though.
 
-4. Using mediatR, Nats and Postgres. There was a quick PoC for integrating Nats as message broker ( and i think it works). But didn't verify it as IntegrationEvents are not used currently.
+4. Using mediatR, Nats and Postgres. There was a quick PoC for integrating Nats as message broker ( and i think it works). But didn't verify it as IntegrationEvents are not yet handled.
