@@ -39,15 +39,15 @@ But the gateway won't redirect to the path to notes ( it will go to contacts).
 
 ### changes for my other microservices
 
-- Chosen tech is robust, code is good
+- Chosen tech is robust, structure is awesome
 
 - using a framework that supports SAGA's ( eg. MassTransit)
 
-- more DDD ( eg. AggregateRoot, value-objects )
+- more DDD ( eg. AggregateRoot, value-objects, ...)
 
 - other flow of sending events ( through the AggregateRoot)
 
-- Angular 8 or Vue 3 as admin dashboard, not for client webapps
+- Angular 8 or Vue 3 as admin dashboard, not for customer webapps ( = visitor oriented)
 
 - removing the api layer and gateway, leaves a robust modular monolith structure and removes a lot of lag ( eg. Gateway alone is 50ms delay ) and simplifies devops complexity
 
