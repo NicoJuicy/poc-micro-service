@@ -35,4 +35,5 @@ But the gateway won't redirect to the path to notes ( it will go to contacts).
 
 4. Using mediatR, Nats and Postgres. There was a quick PoC for integrating Nats as message broker ( and i think it works). But didn't verify it as IntegrationEvents are not yet handled.
 
+5. **Infrastructure layer should only contain CRUD of the Aggregate ( eg. Contact).**, it contains too much now.
 
