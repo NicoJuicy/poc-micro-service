@@ -16,7 +16,7 @@ PoC - Microservice with a gateway, healthchecks, 2 microservices and a quick fro
 - Postgress as DocumentStore
 - Ocelot as gateway
 
-# Note
+### Notes
 
 This is a quick PoC as i am integrating microservices ( but more complete) in another project of mine.
 
