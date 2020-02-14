@@ -1,6 +1,6 @@
 # Foreword
 
-This is just a PoC, treat it as one, what is described as working works.
+This is just a PoC, treat it as one, what is described as working works. It served it's goal :)
 
 # Requirements
 - Docker/local with Nats running
