@@ -47,7 +47,7 @@ But the gateway won't redirect to the path to notes ( it will go to contacts).
 
 - other flow of sending events ( through the AggregateRoot)
 
-- Angular 8 or Vue 3 as admin dashboard, not for customer webapps ( = visitor oriented)
+- Angular 8 or Vue 3 as admin dashboard, not for customer webapps ( = visitor oriented). Didn't like Razor Pages, but liked the minimalistic implemention. I'm wrapping Services with route-attributes for minimal code + dependencies + quick custumization for webapps connected to bff's.
 
 - removing the api layer and gateway, leaves a robust modular monolith structure and removes a lot of lag ( eg. Gateway alone is 50ms delay ) and simplifies devops complexity
 
