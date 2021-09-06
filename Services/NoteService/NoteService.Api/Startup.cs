@@ -38,13 +38,8 @@ namespace NoteService.Api
             services.AddInfrastructure(Configuration.GetConnectionString("PgConnection"));
             services.AddHealthChecks()
                 .AddNpgSql(Configuration.GetConnectionString("PgConnection"));
-            // services.AddMvc();
-
+           
             services.AddSingleton<IEventBus>(CreateNatsBus(Configuration.GetSection("MessageBus:Nats:Ip").Get<string[]>()));
-          //  services.AddScoped<IEventBus, CreateNatsBus(Configuration.GetSection("MessageBus:Nats:Ip").Get<string[]>());
-
-         //   services.AddRazorPages().AddMvcOptions(options => options.EnableEndpointRouting = true);
-           // services.AddHealthChecks();
             services.AddElmah();
             services.AddControllers();
 
@@ -52,10 +47,6 @@ namespace NoteService.Api
                 options.Filters.Add(typeof(HttpGlobalExceptionFilter<Application.Exceptions.NoteDomainException>));
             });
 
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new Info { Title = "Note Api", Version = "v1" });
-            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,38 +54,14 @@ namespace NoteService.Api
         {
             app.UseHealthChecks("/hb");
 
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
-
-
-            //  app.UseMvc();
             app.UseRouting();
             app.UseCors();
             app.UseElmah();
             app.UseDeveloperExceptionPage();
-          //  app.UseWelcomePage();
-
-            //app.UseSwagger();
-            //app.UseStaticFiles();
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS etc.), specifying the Swagger JSON endpoint.
-            //app.UseSwaggerUI(c =>
-            //{
-            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Meeting Management V1");
-            //});
-
+         
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
-              //  endpoints.MapHealthChecks("/hb");
             });
-
-            //app.Run(async (context) =>
-            //{
-            //    await context.Response.WriteAsync("Hello World!");
-            //});
-
-
         }
 
         private static IEventBus CreateNatsBus(string[] ips)
